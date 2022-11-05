@@ -115,14 +115,14 @@ public class venta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Usuario", "Cliente", "Forma De Pago", "Producto", "Cantidad"
+                "Id", "Producto", "Cantidad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -216,6 +216,11 @@ public class venta extends javax.swing.JFrame {
 
         jLabel8.setText("Producto: ");
 
+        listProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listProductosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(listProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -384,6 +389,25 @@ public class venta extends javax.swing.JFrame {
     private void txtProductoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductoBusquedaActionPerformed
+
+    private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
+        // TODO add your handling code here:
+        Producto productoSeleccionado = listProductos.getSelectedValue();
+        int cantidad = Integer.parseInt(txtcantidad.getText());
+        
+        var model = (DefaultTableModel)Tabla.getModel();
+        var row = new Object[3];
+        row[0] = productoSeleccionado.getId();
+        row[1] = productoSeleccionado.getNombre();
+        row[2] = cantidad;
+        
+        model.addRow(row);
+        
+        // Limpiar Campos Producto
+        listProductos.setModel(new DefaultListModel());
+        txtcantidad.setText("");
+        txtProductoBusqueda.setText("");
+    }//GEN-LAST:event_listProductosMouseClicked
 
     /**
      * @param args the command line arguments

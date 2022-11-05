@@ -207,13 +207,10 @@
         <Component class="javax.swing.JTable" name="Tabla">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="Id" type="java.lang.String"/>
-                <Column editable="false" title="Usuario" type="java.lang.String"/>
-                <Column editable="false" title="Cliente" type="java.lang.String"/>
-                <Column editable="false" title="Forma De Pago" type="java.lang.String"/>
+              <Table columnCount="3" rowCount="0">
+                <Column editable="false" title="Id" type="java.lang.Integer"/>
                 <Column editable="false" title="Producto" type="java.lang.String"/>
-                <Column editable="false" title="Cantidad" type="java.lang.String"/>
+                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
               </Table>
             </Property>
           </Properties>
@@ -361,6 +358,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listProductosMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Producto&gt;"/>
           </AuxValues>
