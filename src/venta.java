@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
@@ -530,6 +531,19 @@ public class venta extends javax.swing.JFrame {
                         ventaCreada.getId(),
                         productoId
                 );
+                
+                var producto = productoRepository
+                        .read()
+                        .stream()
+                        .filter(p -> p.getId() == productoId)
+                        .findFirst()
+                        .orElseThrow();
+                        
+                var stockActual = Integer.parseInt(producto.getCantidad());
+                int nuevoStock = (stockActual - cantidad);
+                producto.setCantidad(String.valueOf(nuevoStock));
+                
+                productoRepository.update(productoId, producto);
             }
             
             JOptionPane.showMessageDialog(this, "Venta guardada");
