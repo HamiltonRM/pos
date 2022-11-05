@@ -4,19 +4,21 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author rouse
  */
 public class Venta {
     private int id;
-    private  String fecha;
+    private Date fecha;
     private int usuario_id;
     private int cliente_id;
     private int forma_pago_id;
     
     
-    public Venta(int _id,String _fecha,int _usuario_id,int _cliente_id, int _forma_pago_id){
+    public Venta(int _id,Date _fecha,int _usuario_id,int _cliente_id, int _forma_pago_id){
         id=_id;
         fecha=_fecha;
         usuario_id=_usuario_id;
@@ -30,10 +32,10 @@ public class Venta {
     public int getId(){
         return id;
     }
-    public void setFecha(String fecha){
+    public void setFecha(Date fecha){
         this.fecha=fecha;
     }
-    public String getFecha(){
+    public Date getFecha(){
         return fecha;
     }
     public void setUsuario_id(int usuario_id){

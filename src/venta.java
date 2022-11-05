@@ -20,7 +20,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.ListModel;
+import javax.swing.table.TableModel;
 import models.Categoria;
+import models.DetalleVenta;
 import models.FormaPago;
 import models.Marca;
 import models.Medida;
@@ -34,6 +36,7 @@ import repositorio.SeccionRepository;
 import repositorio.VentaRepository;
 import models.Usuario;
 import models.Venta;
+import repositorio.DetallesVentaRepository;
 import repositorio.FormaPagoRepository;
 import repositorio.FormaPagoRepository;
 
@@ -45,7 +48,10 @@ public class venta extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     PreparedStatement ps;
+
+    // Repositorios
     VentaRepository ventaRepository;
+    DetallesVentaRepository detallesVentaRepository;
     FormaPagoRepository formapagoRepository;
     ProductoRepository productoRepository;
 
@@ -56,6 +62,7 @@ public class venta extends javax.swing.JFrame {
         ventaRepository = new VentaRepository(conexion);
         formapagoRepository = new FormaPagoRepository(conexion);
         productoRepository = new ProductoRepository(conexion);
+        detallesVentaRepository = new DetallesVentaRepository(conexion);
         SetImageLabel(jLabel7, "src/imagen/ventaa.png");
         this.getContentPane().setBackground(Color.PINK);
         rellenarCombos();
@@ -373,13 +380,13 @@ public class venta extends javax.swing.JFrame {
             var productos = productoRepository.read();
             var model = new DefaultListModel<Producto>();
             var busqueda = txtProductoBusqueda.getText().toUpperCase();
-            
+
             for (Producto producto : productos) {
                 if (producto.getNombre().toUpperCase().contains(busqueda)) {
                     model.addElement(producto);
                 }
             }
-            
+
             listProductos.setModel(model);
         } catch (SQLException ex) {
             Logger.getLogger(venta.class.getName()).log(Level.SEVERE, null, ex);
@@ -394,15 +401,15 @@ public class venta extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto productoSeleccionado = listProductos.getSelectedValue();
         int cantidad = Integer.parseInt(txtcantidad.getText());
-        
-        var model = (DefaultTableModel)Tabla.getModel();
+
+        var model = (DefaultTableModel) Tabla.getModel();
         var row = new Object[3];
         row[0] = productoSeleccionado.getId();
         row[1] = productoSeleccionado.getNombre();
         row[2] = cantidad;
-        
+
         model.addRow(row);
-        
+
         // Limpiar Campos Producto
         listProductos.setModel(new DefaultListModel());
         txtcantidad.setText("");
@@ -509,7 +516,27 @@ public class venta extends javax.swing.JFrame {
     }
 
     void agregar() {
+        var formaPagoSeleccionada = (FormaPago) jComboBoxFormaPago.getSelectedItem();
+        try {
+            var ventaCreada = ventaRepository.create(1, 1, formaPagoSeleccionada.getId());
 
+            TableModel productosModel = Tabla.getModel();
+
+            for (int i = 0; i < productosModel.getRowCount(); i++) {
+                var productoId = Integer.parseInt(productosModel.getValueAt(i, 0).toString());
+                var cantidad = Integer.parseInt(productosModel.getValueAt(i, 2).toString());
+
+                DetalleVenta detalleCreado = detallesVentaRepository.create(cantidad,
+                        ventaCreada.getId(),
+                        productoId
+                );
+            }
+            
+            JOptionPane.showMessageDialog(this, "Venta guardada");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Venta no guardada");
+            Logger.getLogger(venta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void SetImageLabel(JLabel labelName, String root) {
