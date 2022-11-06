@@ -38,6 +38,7 @@ SeccionRepository repositorio;
      */
     public frmsecciones() {
         initComponents();
+        modelo=(DefaultTableModel)Tabla.getModel();
          SetImageLabel(jLabel2,"src/imagen/seccion.png");
          this.getContentPane().setBackground(Color.PINK);
         setLocationRelativeTo(null);

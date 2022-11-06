@@ -31,6 +31,7 @@ MedidaRepository repositorio;
    
     public frmmedidas() {
         initComponents();
+        modelo=(DefaultTableModel)Tabla.getModel();
          SetImageLabel(jLabel2,"src/imagen/medida.png");
          this.getContentPane().setBackground(Color.PINK);
    setLocationRelativeTo(null);

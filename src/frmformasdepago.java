@@ -27,6 +27,7 @@ FormaPagoRepository repositorio;
 
     public frmformasdepago() {
         initComponents();
+        DefaultTableModel modelo;
          SetImageLabel(jLabel3,"src/imagen/pago.png");
          this.getContentPane().setBackground(Color.PINK);
          setLocationRelativeTo(null);

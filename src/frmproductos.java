@@ -57,6 +57,7 @@ public class frmproductos extends javax.swing.JFrame {
 
     public frmproductos() {
         initComponents();
+        modelo=(DefaultTableModel)Tabla.getModel();
         SetImageLabel(jLabel7, "src/imagen/producto.png");
         this.getContentPane().setBackground(Color.PINK);
         setLocationRelativeTo(null);

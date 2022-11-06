@@ -38,6 +38,7 @@ public class frmcategorias extends javax.swing.JFrame {
     public frmcategorias() {
 
         initComponents();
+        DefaultTableModel modelo;
          SetImageLabel(jLabel5,"src/imagen/categoria.png");
          this.getContentPane().setBackground(Color.PINK);
         setLocationRelativeTo(null);

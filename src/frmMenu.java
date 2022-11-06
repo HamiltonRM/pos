@@ -4,6 +4,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,6 +22,7 @@ public class frmMenu extends javax.swing.JFrame {
      */
     public frmMenu() {
         initComponents();
+     
         this.setLocationRelativeTo(this);
         SetImageLabel(jLabel30,"src/imagen/clientesinfondo.png");
          SetImageLabel(jLabel31,"src/imagen/proveedor.png");

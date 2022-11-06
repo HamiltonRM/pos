@@ -58,6 +58,7 @@ public class venta extends javax.swing.JFrame {
 
     public venta() {
         initComponents();
+        modelo=(DefaultTableModel)Tabla.getModel();
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) Tabla.getModel();
         ventaRepository = new VentaRepository(conexion);

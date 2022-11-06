@@ -29,6 +29,7 @@ ResultSet rs;
 ClienteRepository repositorio;
     public frmClientes() {
         initComponents();
+            modelo=(DefaultTableModel)Tabla.getModel();
          SetImageLabel(jLabel20,"src/imagen/clientesinfondo.png");
         this.getContentPane().setBackground(Color.pink);
         setLocationRelativeTo(null);

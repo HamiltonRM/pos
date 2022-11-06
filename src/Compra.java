@@ -45,6 +45,7 @@ FormaPagoRepository formapagoRepository;
      */
     public Compra() {
         initComponents();
+        DefaultTableModel modelo;
         setLocationRelativeTo(null);
         SetImageLabel(jLabel1,"src/imagen/compra.png");
         this.getContentPane().setBackground(Color.PINK);

@@ -27,6 +27,7 @@ public class frmusuarios extends javax.swing.JFrame {
    
     public frmusuarios() {
         initComponents();
+        modelo=(DefaultTableModel)Tabla.getModel();
          SetImageLabel(jLabel2,"src/imagen/usuario.png");
          this.getContentPane().setBackground(Color.PINK);
          setLocationRelativeTo(null);

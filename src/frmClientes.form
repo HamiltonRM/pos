@@ -62,7 +62,6 @@
                               <Component id="txtid" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
                               <Component id="lblclientes" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>

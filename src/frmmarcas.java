@@ -35,6 +35,7 @@ MarcaRepository repositorio;
 
     public frmmarcas() {
         initComponents();
+        model=(DefaultTableModel)Tabla.getModel();
        setLocationRelativeTo(null);
          SetImageLabel(jLabel6,"src/imagen/marca.png");
           this.getContentPane().setBackground(Color.PINK);

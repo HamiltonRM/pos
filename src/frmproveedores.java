@@ -36,6 +36,7 @@ public class frmproveedores extends javax.swing.JFrame {
      */
     public frmproveedores() {
         initComponents();
+            modelo=(DefaultTableModel)Tabla.getModel();
          SetImageLabel(jLabel4,"src/imagen/proveedor.png");
           this.getContentPane().setBackground(Color.PINK);
          setLocationRelativeTo(null);
